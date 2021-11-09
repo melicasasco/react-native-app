@@ -11,10 +11,10 @@ const Header = (props) => {
 
   return (
     <Appbar.Header style={styles.header}>
-      <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title={props.title} subtitle={props.subtitle} />
-      <Appbar.Action icon="magnify" onPress={_handleSearch} />
-      <Appbar.Action icon="dots-vertical" onPress={_handleMore} />
+      <Appbar.BackAction color="white" onPress={_goBack} />
+      <Appbar.Content color="white" title={props.title} subtitle={props.subtitle} />
+      <Appbar.Action color="white" icon="magnify" onPress={_handleSearch} />
+      <Appbar.Action color="white" icon="dots-vertical" onPress={_handleMore} />
     </Appbar.Header>
   );
 };

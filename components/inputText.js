@@ -20,5 +20,5 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: '#fff',
         minWidth: '60%'
-    }
+    },
 })

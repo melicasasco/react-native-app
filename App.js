@@ -11,6 +11,7 @@ import Card from './components/card';
 import InputText from './components/inputText';
 import InputNumeric from './components/inputNumeric';
 import Header from './components/header';
+import AppBar from './components/appBar';
 
 
 export default function App() {
@@ -139,6 +140,7 @@ const handleConfirmDelete =  () => {
           </Modal>
        </Card>
      </View>
+     <AppBar></AppBar>
     </PaperProvider>
   );
 }
