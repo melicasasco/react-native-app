@@ -12,6 +12,7 @@ import InputText from '../components/InputText';
 import InputNumeric from '../components/InputNumeric';
 import Header from '../components/Header';
 import AppBar from '../components/AppBar';
+import Colors from '../constants/colors';
 
 export default function PerfilGatuno({backHome}) {
 
@@ -90,7 +91,7 @@ const handleConfirmDelete =  () => {
                   onChangeText={value => handleChangePatologia(value)}
                 />
                 <IconButton
-                    style={{ backgroundColor: '#fe9b96'}}
+                    style={{ backgroundColor: Colors.primary}}
                     icon="plus"
                     color='#fff'
                     size={20}
@@ -116,7 +117,7 @@ const handleConfirmDelete =  () => {
               <View style={styles.row}>
                 <InputText label='Agregar nuevo'></InputText>
                 <IconButton 
-                  style={{ backgroundColor: '#fe9b96'}}
+                  style={{ backgroundColor: Colors.primary }}
                   icon="plus"
                   color='#fff'
                   size={20}
@@ -131,7 +132,7 @@ const handleConfirmDelete =  () => {
                   <Text style={styles.modalMessage}>¿Está seguro que desea borrar?</Text>
                   <Text style={styles.modalTitle}>{itemSelected.value}</Text>
                   <View>
-                    <Button color='#fe9b96'
+                    <Button color={Colors.primary}
                       onPress={() => handleConfirmDelete()}
                       title="CONFIRMAR"
                     />
