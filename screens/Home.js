@@ -1,28 +1,31 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Button, } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Button, TouchableOpacity } from 'react-native';
 import { Provider as PaperProvider, TextInput, IconButton, Chip, Modal, Card as ImageCard} from 'react-native-paper';
-import Header from '../components/Header';
 import AppBar from '../components/AppBar';
 import Card from '../components/Card';
 
 
-const Home = ( {startApp} ) =>  {
+const Home = ({navigation}) =>  {
 
+    const handleGoToShop = () => {
+        navigation.navigate('Shop');
+    }
 
     return (
         <PaperProvider>
-            <Header />
                 <View style={styles.title}> 
-                <Text style={{fontFamily: 'Lato', fontSize: 30}}>¡Hola!</Text>
+                <Text style={{fontSize: 30}}>¡Hola!</Text>
                 </View>
                 <View style={styles.title}>
-                <Text style={{fontFamily: 'LatoItalic', fontSize: 20}}>¿Qué querés visitar hoy?</Text>
+                <Text style={{fontSize: 20}}>¿Qué querés visitar hoy?</Text>
                 </View>
                 <View style={styles.cardSpace}>
-                <ImageCard style={[styles.cardsHome, styles.shadow]}>
-                    <ImageCard.Cover source={require('../assets/images/tienda.jpeg')} />
-                    <Text>Tienda</Text>
-                </ImageCard>
+                <TouchableOpacity onPress={handleGoToShop}>
+                    <ImageCard style={[styles.cardsHome, styles.shadow]}>
+                        <ImageCard.Cover source={require('../assets/images/tienda.jpeg')} />
+                        <Text>Tienda</Text>
+                    </ImageCard>
+                </TouchableOpacity>
                 </View>
                 <View style={styles.cardSpace}>
                 <ImageCard style={[styles.cardsHome, styles.shadow]}>
@@ -30,8 +33,7 @@ const Home = ( {startApp} ) =>  {
                     <Text>Comunidad</Text>
                 </ImageCard>
                 </View>
-            
-            <AppBar handleCatProfile={startApp} />
+            <AppBar navigation={navigation} />
         </PaperProvider>
     );
 

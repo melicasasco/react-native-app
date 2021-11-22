@@ -10,18 +10,17 @@ import { Provider as PaperProvider, TextInput, IconButton, Chip, Modal, Portal }
 import Card from '../components/Card';
 import InputText from '../components/InputText';
 import InputNumeric from '../components/InputNumeric';
-import Header from '../components/Header';
 import AppBar from '../components/AppBar';
-import Colors from '../constants/colors';
+import Colors from '../constants/Colors';
 
-export default function PerfilGatuno({backHome}) {
+export default function PerfilGatuno({navigation}) {
 
 const [patologias, setPatologias] = useState ([]);
 const [aspectos, setAspectos] = useState ([]);
 const [inputPatologia, setInputPatologia] = useState('');
 const [inputAspecto, setInputAspecto] = useState('');
 const [itemSelected, setItemSelected] = useState({});
-const [modalVisible, setModalVisible] = useState(false);
+const [visible, setVisible] = useState(false);
 
 
 const handleChangePatologia = (value) => {
@@ -56,22 +55,24 @@ const handleAddAspecto = () => {
 const handleModal = (id) => {
   console.log(id)
   setItemSelected(patologias.find(item => item.id === id));
-  setModalVisible(true);
+  showModal(true);
   console.log(itemSelected.value);
   console.log(itemSelected.id);
 }
 
+const showModal = () => setVisible(true);
+const hideModal = () => setVisible(false)
+
 const handleConfirmDelete =  () => {
   const id = itemSelected.id;
   setPatologias(patologias.filter(item => item.id !== id));
-  setModalVisible(false);
+  hideModal(false);
   setItemSelected({});
 }
 
 
   return (
     <PaperProvider>
-      <Header title='Perfil' subtitle='Datos de tu michi' back={backHome}/>
      <View>
        <Card>
          <View>
@@ -101,6 +102,7 @@ const handleConfirmDelete =  () => {
               <View>
                 <FlatList 
                           data={patologias}
+                          numColumns={4}
                           renderItem = {data => {
                             return(
                               <View style = {{flexWrap: 'wrap', margin: 5, flexDirection:'row'}}>
@@ -126,14 +128,14 @@ const handleConfirmDelete =  () => {
             </View>
           </View>
           <Portal>
-            <Modal animationType="slide" visible={modalVisible}>
+            <Modal animationType="slide" visible={visible} onDismiss={hideModal}>
               <View style={styles.modalContainer}>
                 <View style={[styles.modalContent, styles.shadow]}>
                   <Text style={styles.modalMessage}>¿Está seguro que desea borrar?</Text>
                   <Text style={styles.modalTitle}>{itemSelected.value}</Text>
                   <View>
                     <Button color={Colors.primary}
-                      onPress={() => handleConfirmDelete()}
+                      onPress={handleConfirmDelete}
                       title="CONFIRMAR"
                     />
                   </View>
@@ -143,7 +145,7 @@ const handleConfirmDelete =  () => {
           </Portal>
        </Card>
      </View>
-     <AppBar></AppBar>
+     <AppBar navigation={navigation}></AppBar>
     </PaperProvider>
   );
 }

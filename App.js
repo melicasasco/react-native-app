@@ -7,37 +7,30 @@ import {
   Button,
 } from 'react-native';
 import { Provider as PaperProvider, TextInput, IconButton, Chip, Modal } from 'react-native-paper';
-import Header from './components/Header';
 import AppBar from './components/AppBar';
 import Home from './screens/Home';
 import PerfilGatuno from './screens/PerfilGatuno';
 //fonts
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
+import Navigator from './navigation/Navigator';
 
 
 export default function App() {
 
-  const [loaded] = useFonts({
-    Lato: require("./assets/fonts/Lato-Regular.ttf"),
-    LatoItalic: require("./assets/fonts/Lato-Italic.ttf"),
-  });
+  //const [loaded] = useFonts({
+    //Lato: require("./assets/fonts/Lato-Regular.ttf"),
+    //LatoItalic: require("./assets/fonts/Lato-Italic.ttf"),
+  //});
 
 
-  
-  const [mostrarApp, setMostrarApp] = useState (false);
-  const screen = mostrarApp
-    ? <PerfilGatuno backHome={setMostrarApp}></PerfilGatuno>
-    : <Home startApp={setMostrarApp}></Home>
-
-
-    if (!loaded) return <AppLoading />;
+    //if (!loaded) return <AppLoading />;
 
 
     return (
    
         <PaperProvider>
-          {screen}
+          <Navigator />
         </PaperProvider>
 
     );

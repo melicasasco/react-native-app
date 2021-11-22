@@ -2,21 +2,26 @@ import * as React from 'react';
 import { Appbar } from 'react-native-paper';
 import { StyleSheet } from 'react-native';
 
-const AppBar = (props) => {
+const AppBar = ({navigation}) => {
   
-  const handlePressCatProfile = () => props.handleCatProfile(true);
+const handleGoToPerfilGatuno = () => {
+  navigation.navigate('PerfilGatuno');
+
+}
+
+const handleGoHome = () => {
+  navigation.navigate('Home');
+}
 
   return(
   <Appbar style={styles.bottom}>
     <Appbar.Action color='white'
       icon="home"
-      onPress={() => console.log('Pressed archive')}
+      onPress={handleGoHome}
       />
       <Appbar.Action color='white' icon="account-multiple" onPress={() => console.log('Pressed mail')} />
       <Appbar.Action color='white' icon="account" onPress={() => console.log('Pressed label')} />
-      <Appbar.Action color='white'
-        icon="paw"
-        onPress={handlePressCatProfile}
+      <Appbar.Action color='white' icon="paw" onPress={handleGoToPerfilGatuno}
       />
     </Appbar>
  );};
