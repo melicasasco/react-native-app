@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, Text, View, FlatList, Button, TouchableOpacity } from 'react-native';
-import { Provider as PaperProvider, TextInput, IconButton, Chip, Modal, Card as ImageCard} from 'react-native-paper';
-import AppBar from '../components/AppBar';
-import Card from '../components/Card';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { Provider as PaperProvider, Card as ImageCard} from 'react-native-paper';
 
 
 const Home = ({navigation}) =>  {
@@ -33,7 +31,6 @@ const Home = ({navigation}) =>  {
                     <Text>Comunidad</Text>
                 </ImageCard>
                 </View>
-            <AppBar navigation={navigation} />
         </PaperProvider>
     );
 

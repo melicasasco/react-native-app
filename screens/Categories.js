@@ -2,12 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, Text, View,  TouchableOpacity, ScrollView, SafeAreaView } from 'react-native';
 import { Provider as PaperProvider, Card as ImageCard} from 'react-native-paper';
 
-const Shop = ({ navigation }) => {
-
-
-const handleGoToAlimentacion = () => {
-    navigation.navigate('Categories');
-}
+const Categories = ({ navigation }) => {
 
     return (
         <PaperProvider>
@@ -16,29 +11,18 @@ const handleGoToAlimentacion = () => {
                     <View style={styles.cardSpace}>
                         <TouchableOpacity>
                             <ImageCard style={[styles.cardsHome, styles.shadow]}>
-                                <ImageCard.Cover source={require('../assets/images/accesorios.jpeg')} />
-                                <Text>Accesorios</Text>
+                                <ImageCard.Cover style={{height: 140, width: 140}} source={require('../assets/images/balanceado.jpg')} />
+                                <Text>Alimento seco</Text>
                             </ImageCard>
                         </TouchableOpacity>
-                    </View>
-                    <View style={styles.cardSpace}>
-                    <TouchableOpacity
-                     onPress={handleGoToAlimentacion}>
-                            <ImageCard style={[styles.cardsHome, styles.shadow]}>
-                                <ImageCard.Cover source={require('../assets/images/alimentacion.jpeg')} />
-                                <Text>Alimentacion</Text>
-                            </ImageCard>
-                        </TouchableOpacity>
-                    </View>
-                    <View style={styles.cardSpace}>
                         <TouchableOpacity>
-                                <ImageCard style={[styles.cardsHome, styles.shadow]}>
-                                    <ImageCard.Cover source={require('../assets/images/medicacion.jpeg')} />
-                                    <Text>Medicacion</Text>
-                                </ImageCard>
-                            </TouchableOpacity>
+                            <ImageCard style={[styles.cardsHome, styles.shadow]}>
+                                <ImageCard.Cover style={{height: 140, width: 140}}  source={require('../assets/images/humedo.jpg')} />
+                                <Text>Alimento humedo</Text>
+                            </ImageCard>
+                        </TouchableOpacity>
                     </View>
-                    </ScrollView>
+                   </ScrollView>
                     </SafeAreaView>
 
             </PaperProvider>
@@ -67,9 +51,13 @@ const styles = StyleSheet.create ({
         elevation: 5,
       },
       cardSpace: {
-          padding: 20,
+          flexDirection: 'row',
+          justifyContent: 'center',
+      },
+      cardsHome: {
+          margin: 10,
       }
 })
 
 
-export default Shop;
+export default Categories;

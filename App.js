@@ -1,36 +1,27 @@
-import React, { useState } from 'react';
-import {
-  StyleSheet,
-  Text,
-  View,
-  FlatList,
-  Button,
-} from 'react-native';
-import { Provider as PaperProvider, TextInput, IconButton, Chip, Modal } from 'react-native-paper';
-import AppBar from './components/AppBar';
-import Home from './screens/Home';
-import PerfilGatuno from './screens/PerfilGatuno';
+import React from 'react';
+import { Provider as PaperProvider } from 'react-native-paper';
+
 //fonts
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
-import Navigator from './navigation/Navigator';
+import MainNavigator from './navigation';
 
 
 export default function App() {
 
-  //const [loaded] = useFonts({
-    //Lato: require("./assets/fonts/Lato-Regular.ttf"),
-    //LatoItalic: require("./assets/fonts/Lato-Italic.ttf"),
-  //});
+  const [loaded] = useFonts({
+    Lato: require("./assets/fonts/Lato-Regular.ttf"),
+    LatoItalic: require("./assets/fonts/Lato-Italic.ttf"),
+  });
 
 
-    //if (!loaded) return <AppLoading />;
+    if (!loaded) return <AppLoading />;
 
 
     return (
    
         <PaperProvider>
-          <Navigator />
+          <MainNavigator />
         </PaperProvider>
 
     );

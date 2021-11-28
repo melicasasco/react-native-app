@@ -6,11 +6,10 @@ import {
   FlatList,
   Button,
 } from 'react-native';
-import { Provider as PaperProvider, TextInput, IconButton, Chip, Modal, Portal } from 'react-native-paper';
+import {TextInput, IconButton, Chip, Modal, Portal } from 'react-native-paper';
 import Card from '../components/Card';
 import InputText from '../components/InputText';
 import InputNumeric from '../components/InputNumeric';
-import AppBar from '../components/AppBar';
 import Colors from '../constants/Colors';
 
 export default function PerfilGatuno({navigation}) {
@@ -72,7 +71,6 @@ const handleConfirmDelete =  () => {
 
 
   return (
-    <PaperProvider>
      <View>
        <Card>
          <View>
@@ -145,8 +143,6 @@ const handleConfirmDelete =  () => {
           </Portal>
        </Card>
      </View>
-     <AppBar navigation={navigation}></AppBar>
-    </PaperProvider>
   );
 }
 
