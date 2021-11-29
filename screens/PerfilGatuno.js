@@ -6,21 +6,26 @@ import {
   FlatList,
   Button,
 } from 'react-native';
+import { useSelector, useDispatch } from 'react-redux';
 import {TextInput, IconButton, Chip, Modal, Portal } from 'react-native-paper';
 import Card from '../components/Card';
 import InputText from '../components/InputText';
 import InputNumeric from '../components/InputNumeric';
 import Colors from '../constants/Colors';
+import { addPatologia, removePatologia, confirmRemovePatologia } from '../store/actions/patologias.action';
 
 export default function PerfilGatuno({navigation}) {
 
-const [patologias, setPatologias] = useState ([]);
+  const patologias = useSelector ( state => state.patologias.list);
+  const itemSelected = useSelector ( state => state.patologias.selected);
+
+//const [patologias, setPatologias] = useState ([]);
 const [aspectos, setAspectos] = useState ([]);
 const [inputPatologia, setInputPatologia] = useState('');
 const [inputAspecto, setInputAspecto] = useState('');
-const [itemSelected, setItemSelected] = useState({});
 const [visible, setVisible] = useState(false);
 
+const dispatch = useDispatch();
 
 const handleChangePatologia = (value) => {
   setInputPatologia(value);
@@ -32,10 +37,7 @@ const handleAddPatologia = () => {
     value: inputPatologia,
     id: Math.random().toString(),
   };
-  setPatologias([
-    ...patologias,
-    patologia,
-  ]);
+  dispatch (addPatologia(patologia)); 
   setInputPatologia('');
 }
 
@@ -53,20 +55,16 @@ const handleAddAspecto = () => {
 
 const handleModal = (id) => {
   console.log(id)
-  setItemSelected(patologias.find(item => item.id === id));
-  showModal(true);
-  console.log(itemSelected.value);
-  console.log(itemSelected.id);
+  dispatch(removePatologia(id));
+  showModal();
 }
 
 const showModal = () => setVisible(true);
 const hideModal = () => setVisible(false)
 
 const handleConfirmDelete =  () => {
-  const id = itemSelected.id;
-  setPatologias(patologias.filter(item => item.id !== id));
-  hideModal(false);
-  setItemSelected({});
+  dispatch(confirmRemovePatologia());
+  hideModal();
 }
 
 

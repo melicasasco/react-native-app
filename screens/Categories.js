@@ -8,22 +8,59 @@ const Categories = ({ navigation }) => {
         <PaperProvider>
             <SafeAreaView style={styles.container}>
                 <ScrollView>
+                    <View>
+                        <Text>Alimentos</Text>
+                    </View>
                     <View style={styles.cardSpace}>
                         <TouchableOpacity>
                             <ImageCard style={[styles.cardsHome, styles.shadow]}>
                                 <ImageCard.Cover style={{height: 140, width: 140}} source={require('../assets/images/balanceado.jpg')} />
-                                <Text>Alimento seco</Text>
+                                <Text>Seco</Text>
                             </ImageCard>
                         </TouchableOpacity>
                         <TouchableOpacity>
                             <ImageCard style={[styles.cardsHome, styles.shadow]}>
                                 <ImageCard.Cover style={{height: 140, width: 140}}  source={require('../assets/images/humedo.jpg')} />
-                                <Text>Alimento humedo</Text>
+                                <Text>Humedo</Text>
                             </ImageCard>
                         </TouchableOpacity>
                     </View>
+                    <View>
+                        <Text>Dietas especiales</Text>
+                    </View>
+                    <View style={styles.cardSpace}>
+                        <TouchableOpacity>
+                            <ImageCard style={[styles.cardsHome, styles.shadow]}>
+                                <ImageCard.Cover style={{height: 140, width: 140}} source={require('../assets/images/balanceado.jpg')} />
+                                <Text>Gastrointestinal</Text>
+                            </ImageCard>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <ImageCard style={[styles.cardsHome, styles.shadow]}>
+                                <ImageCard.Cover style={{height: 140, width: 140}}  source={require('../assets/images/humedo.jpg')} />
+                                <Text>Renal</Text>
+                            </ImageCard>
+                        </TouchableOpacity>
+                        
+                    </View>
+
+                    <View style={styles.cardSpace}>
+                        <TouchableOpacity>
+                            <ImageCard style={[styles.cardsHome, styles.shadow]}>
+                                <ImageCard.Cover style={{height: 140, width: 140}} source={require('../assets/images/balanceado.jpg')} />
+                                <Text>Renal</Text>
+                            </ImageCard>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <ImageCard style={[styles.cardsHome, styles.shadow]}>
+                                <ImageCard.Cover style={{height: 140, width: 140}}  source={require('../assets/images/humedo.jpg')} />
+                                <Text>Bebe</Text>
+                            </ImageCard>
+                        </TouchableOpacity>
+                        
+                    </View>
                    </ScrollView>
-                    </SafeAreaView>
+                </SafeAreaView>
 
             </PaperProvider>
 
