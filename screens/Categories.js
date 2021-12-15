@@ -9,7 +9,7 @@ const Categories = ({ navigation }) => {
             <SafeAreaView style={styles.container}>
                 <ScrollView>
                     <View>
-                        <Text>Alimentos</Text>
+                        <Text style={styles.title}>Alimentos</Text>
                     </View>
                     <View style={styles.cardSpace}>
                         <TouchableOpacity>
@@ -26,18 +26,18 @@ const Categories = ({ navigation }) => {
                         </TouchableOpacity>
                     </View>
                     <View>
-                        <Text>Dietas especiales</Text>
+                        <Text style={styles.title}>Dietas especiales</Text>
                     </View>
                     <View style={styles.cardSpace}>
                         <TouchableOpacity>
                             <ImageCard style={[styles.cardsHome, styles.shadow]}>
-                                <ImageCard.Cover style={{height: 140, width: 140}} source={require('../assets/images/balanceado.jpg')} />
-                                <Text>Gastrointestinal</Text>
+                                <ImageCard.Cover style={{height: 140, width: 140, padding: 10}} source={require('../assets/images/sobrepe.jpg')} />
+                                <Text>Sobrepeso</Text>
                             </ImageCard>
                         </TouchableOpacity>
                         <TouchableOpacity>
                             <ImageCard style={[styles.cardsHome, styles.shadow]}>
-                                <ImageCard.Cover style={{height: 140, width: 140}}  source={require('../assets/images/humedo.jpg')} />
+                                <ImageCard.Cover style={{height: 140, width: 140, padding: 10}}  source={require('../assets/images/renal.jpg')} />
                                 <Text>Renal</Text>
                             </ImageCard>
                         </TouchableOpacity>
@@ -47,14 +47,14 @@ const Categories = ({ navigation }) => {
                     <View style={styles.cardSpace}>
                         <TouchableOpacity>
                             <ImageCard style={[styles.cardsHome, styles.shadow]}>
-                                <ImageCard.Cover style={{height: 140, width: 140}} source={require('../assets/images/balanceado.jpg')} />
-                                <Text>Renal</Text>
+                                <ImageCard.Cover style={{height: 140, width: 140, padding: 10}} source={require('../assets/images/urinario.jpg')} />
+                                <Text>Urinario</Text>
                             </ImageCard>
                         </TouchableOpacity>
                         <TouchableOpacity>
                             <ImageCard style={[styles.cardsHome, styles.shadow]}>
-                                <ImageCard.Cover style={{height: 140, width: 140}}  source={require('../assets/images/humedo.jpg')} />
-                                <Text>Bebe</Text>
+                                <ImageCard.Cover style={{height: 140, width: 140, padding: 10}}  source={require('../assets/images/intestina.jpg')} />
+                                <Text>Intestinal</Text>
                             </ImageCard>
                         </TouchableOpacity>
                         

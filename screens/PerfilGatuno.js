@@ -13,6 +13,7 @@ import InputText from '../components/InputText';
 import InputNumeric from '../components/InputNumeric';
 import Colors from '../constants/Colors';
 import { addPatologia, removePatologia, confirmRemovePatologia } from '../store/actions/patologias.action';
+import ImageSelector from '../components/ImageSelector';
 
 export default function PerfilGatuno({navigation}) {
 
@@ -24,6 +25,7 @@ const [aspectos, setAspectos] = useState ([]);
 const [inputPatologia, setInputPatologia] = useState('');
 const [inputAspecto, setInputAspecto] = useState('');
 const [visible, setVisible] = useState(false);
+const [image, setImage] = useState('');
 
 const dispatch = useDispatch();
 
@@ -67,9 +69,13 @@ const handleConfirmDelete =  () => {
   hideModal();
 }
 
+const handlePickImage = (image) => {
+  setImage(image);
+}
 
   return (
      <View>
+       <ImageSelector onImage={handlePickImage}/>
        <Card>
          <View>
             <Text>Perfil Gatuno</Text>

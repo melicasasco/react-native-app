@@ -20,8 +20,8 @@ const PatologiasReducer = (state = initialState, action) => {
         case CONFIRM_REMOVE_PATOLOGIA:
             return {
                 ...state,
+                list: state.list.filter(item => item.id !== state.selected.id),
                 selected: {},
-                list: state.list.filter(item => item.id !== state.selected.id)
             }
         default:
             return state;
