@@ -27,28 +27,28 @@ const TabNavigator = () => {
             component={HomeNavigator} 
             options= {{
                 tabBarLabel: 'Home',
-                tabBarIcon: () => {
-                    <MaterialCommunityIcons name="home" size={24} />
-                }
+                tabBarIcon: ({color}) => (
+                    <MaterialCommunityIcons name="home" color={color} size={24} />
+                )
             }} />
             <BottomTabs.Screen 
             name="ShopTab" 
             component={ShopNavigator} 
             options= {{
                 tabBarLabel: 'Shop',
-                tabBarIcon: () => {
-                    <MaterialCommunityIcons name="shopping" size={24} />
+                tabBarIcon: ({color}) => (
+                    <MaterialCommunityIcons name="shopping" color={color} size={24} />
 
-                }
+                )
             }} />
             <BottomTabs.Screen 
             name="ProfileTab" 
             component={ProfileNavigator}
             options= {{
                 tabBarLabel: 'Cat Profile',
-                tabBarIcon: () => {
-                    <MaterialCommunityIcons name="paw" size={24} />
-                }
+                tabBarIcon: ({color}) => (
+                    <MaterialCommunityIcons name="paw" color={color} size={24} />
+                )
             }} />
         </BottomTabs.Navigator>
     )

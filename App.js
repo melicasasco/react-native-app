@@ -7,7 +7,14 @@ import store from './store';
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import MainNavigator from './navigation';
+import { init } from './db';
 
+init()
+  .then(() => console.log('Database initialized'))
+  .catch(err => {
+    console.log('Database failed to connect')
+    console.log(err.message)
+  })
 
 export default function App() {
 
@@ -16,15 +23,14 @@ export default function App() {
     LatoItalic: require("./assets/fonts/Lato-Italic.ttf"),
   });
 
+  if (!loaded) return <AppLoading />;
 
-    if (!loaded) return <AppLoading />;
 
-
-    return (
-    <Provider store={store}>
-        <PaperProvider>
-          <MainNavigator />
-        </PaperProvider>
-    </Provider>
-    );
-    }
+  return (
+  <Provider store={store}>
+      <PaperProvider>
+        <MainNavigator />
+      </PaperProvider>
+  </Provider>
+  );
+}

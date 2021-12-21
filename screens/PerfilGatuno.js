@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -12,66 +12,66 @@ import Card from '../components/Card';
 import InputText from '../components/InputText';
 import InputNumeric from '../components/InputNumeric';
 import Colors from '../constants/Colors';
-import { addPatologia, removePatologia, confirmRemovePatologia } from '../store/actions/patologias.action';
+import { addPatologia, removePatologia, confirmRemovePatologia, loadPatologias } from '../store/actions/patologias.action';
 import ImageSelector from '../components/ImageSelector';
 
 export default function PerfilGatuno({navigation}) {
-
+  const dispatch = useDispatch();
   const patologias = useSelector ( state => state.patologias.list);
   const itemSelected = useSelector ( state => state.patologias.selected);
 
-//const [patologias, setPatologias] = useState ([]);
-const [aspectos, setAspectos] = useState ([]);
-const [inputPatologia, setInputPatologia] = useState('');
-const [inputAspecto, setInputAspecto] = useState('');
-const [visible, setVisible] = useState(false);
-const [image, setImage] = useState('');
+  useEffect(() => {
+    dispatch(loadPatologias());
+  }, []);
 
-const dispatch = useDispatch();
 
-const handleChangePatologia = (value) => {
-  setInputPatologia(value);
-  console.log(inputPatologia);
-}
+  //const [patologias, setPatologias] = useState ([]);
+  const [aspectos, setAspectos] = useState ([]);
+  const [inputPatologia, setInputPatologia] = useState('');
+  const [inputAspecto, setInputAspecto] = useState('');
+  const [visible, setVisible] = useState(false);
+  const [image, setImage] = useState('');
 
-const handleAddPatologia = () => {
-  const patologia = {
-    value: inputPatologia,
-    id: Math.random().toString(),
-  };
-  dispatch (addPatologia(patologia)); 
-  setInputPatologia('');
-}
+  const handleChangePatologia = (value) => {
+    setInputPatologia(value);
+    console.log(inputPatologia);
+  }
 
-const handleAddAspecto = () => {
-  const aspecto = {
-    value: inputAspecto,
-    id: Math.random().toString(),
-  };
-  setAspectos([
-    ...aspectos,
-    aspecto,
-  ]);
-  setInputAspecto('');
-}
+  const handleAddPatologia = () => {
+    dispatch (addPatologia(inputPatologia)); 
+    setInputPatologia('');
+  }
 
-const handleModal = (id) => {
-  console.log(id)
-  dispatch(removePatologia(id));
-  showModal();
-}
+  const handleAddAspecto = () => {
+    const aspecto = {
+      value: inputAspecto,
+      id: Math.random().toString(),
+    };
+    setAspectos([
+      ...aspectos,
+      aspecto,
+    ]);
+    setInputAspecto('');
+  }
 
-const showModal = () => setVisible(true);
-const hideModal = () => setVisible(false)
+  const handleModal = (id) => {
+    console.log(id);
+    dispatch(removePatologia(id));
+    showModal();
+  }
 
-const handleConfirmDelete =  () => {
-  dispatch(confirmRemovePatologia());
-  hideModal();
-}
+  const showModal = () => setVisible(true);
+  const hideModal = () => setVisible(false)
 
-const handlePickImage = (image) => {
-  setImage(image);
-}
+  const handleConfirmDelete =  (id) => {
+    console.log(id);
+    dispatch(confirmRemovePatologia(id));
+    hideModal();
+  }
+
+  const handlePickImage = (image) => {
+    setImage(image);
+  }
 
   return (
      <View>
@@ -108,7 +108,7 @@ const handlePickImage = (image) => {
                           renderItem = {data => {
                             return(
                               <View style = {{flexWrap: 'wrap', margin: 5, flexDirection:'row'}}>
-                                <Chip icon="delete" onPress={() => handleModal(data.item.id)}> {data.item.value} </Chip>
+                                <Chip icon="delete" onPress={() => handleModal(data.item.id)}> {data.item.patologia} </Chip>
                               </View>
                             )
                           }} 
@@ -137,7 +137,7 @@ const handlePickImage = (image) => {
                   <Text style={styles.modalTitle}>{itemSelected.value}</Text>
                   <View>
                     <Button color={Colors.primary}
-                      onPress={handleConfirmDelete}
+                      onPress={()=>handleConfirmDelete(itemSelected.id)}
                       title="CONFIRMAR"
                     />
                   </View>
